@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/auth_nav_graph"
+    app:startDestination="@id/phoneNumberFragment">
+
+    <fragment
+        android:id="@+id/phoneNumberFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.PhoneNumberFragment"
+        android:label="PhoneNumberFragment" >
+        <action
+            android:id="@+id/action_phoneNumberFragment_to_codeVerificationFragment"
+            app:destination="@id/codeVerificationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/codeVerificationFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.CodeVerificationFragment"
+        android:label="CodeVerificationFragment" >
+        <argument
+            android:name="mobile_number"
+            app:argType="string" />
+    </fragment>
+</navigation>

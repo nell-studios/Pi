@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Pi</string>
+    <string name="enter_your_phone_number">Enter Your Phone Number</string>
+    <string name="send_otp">Send OTP</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="verify">Verify</string>
+    <string name="mobile_number">mobile_number</string>
 </resources>
