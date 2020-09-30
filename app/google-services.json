@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "14089269158",
+    "firebase_url": "https://pi-maths.firebaseio.com",
+    "project_id": "pi-maths",
+    "storage_bucket": "pi-maths.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14089269158:android:300cf5fafd92e9ae18a967",
+        "android_client_info": {
+          "package_name": "nellStudios.tech.pi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "14089269158-bp84k4lvngpn3hs5l96vb3c97soh17hl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "nellStudios.tech.pi",
+            "certificate_hash": "36d63351aea5b30a72c88b933c89aea5d05ef616"
+          }
+        },
+        {
+          "client_id": "14089269158-5bhu0p5rdrsibk7ucf58h9j9j0e4ofgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH6KRbqR6ViA7AyTp9gJ5TiuU3rNjG7l8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14089269158-5bhu0p5rdrsibk7ucf58h9j9j0e4ofgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
