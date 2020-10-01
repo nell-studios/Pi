@@ -5,4 +5,5 @@
     <string name="enter_otp">Enter OTP</string>
     <string name="verify">Verify</string>
     <string name="mobile_number">mobile_number</string>
+    <string name="userArgument">user</string>
 </resources>

@@ -6,16 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_code_verification.*
 import nellStudios.tech.pi.R
+import nellStudios.tech.pi.models.User
+import nellStudios.tech.pi.ui.activities.AuthActivity
 import nellStudios.tech.pi.ui.activities.MainActivity
-import nellStudios.tech.pi.utils.Constants.Companion.PHONE_AUTH_TIMEOUT_DURATION
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -79,8 +82,24 @@ class CodeVerificationFragment: BaseFragment() {
     private fun signInWithPhoneAuthCreds(creds: PhoneAuthCredential) {
         firebaseAuth.signInWithCredential(creds).addOnCompleteListener {
             if (it.isSuccessful) {
-                startActivity(Intent(requireActivity(), MainActivity::class.java))
+                addUserToDatabaseAndLogin(it.result?.user)
             } else Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun addUserToDatabaseAndLogin(firebaseUser: FirebaseUser?) {
+        val user = User().apply {
+            phoneNumber = "+91" + args.mobileNumber
+            uid = firebaseUser?.uid
+        }
+        (activity as AuthActivity).viewModel.createUser(user)
+        (activity as AuthActivity).viewModel.createdUserLiveData?.observe(viewLifecycleOwner, Observer {
+            if (it.isCreated!!) {
+                val intent = Intent(requireActivity(), MainActivity::class.java)
+                intent.putExtra(getString(R.string.userArgument), it)
+                startActivity(intent)
+                requireActivity().finish()
+            } else Toast.makeText(context, "User Not Created", Toast.LENGTH_SHORT).show()
+        })
     }
 }
