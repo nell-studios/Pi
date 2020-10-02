@@ -11,4 +11,9 @@
     <string name="search">Search</string>
     <string name="downloads">Downloads</string>
     <string name="profile">Profile</string>
+    <string name="downloaded_videos">Downloaded Videos</string>
+    <string name="see_all">See All</string>
+    <string name="explore">Explore</string>
+    <string name="continue_watching">Continue Watching</string>
+    <string name="subscriptions">Subscriptions</string>
 </resources>
