@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav_graph"
+    app:startDestination="@id/homeScreenFragment">
+
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.HomeScreenFragment"
+        android:label="HomeScreenFragment" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.SearchFragment"
+        android:label="SearchFragment" />
+    <fragment
+        android:id="@+id/downloadFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.DownloadFragment"
+        android:label="DownloadFragment" />
+    <fragment
+        android:id="@+id/edtiProfileFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.EdtiProfileFragment"
+        android:label="EdtiProfileFragment" />
+    <fragment
+        android:id="@+id/profileFragment2"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.ProfileFragment"
+        android:label="ProfileFragment" >
+        <action
+            android:id="@+id/action_profileFragment2_to_edtiProfileFragment"
+            app:destination="@id/edtiProfileFragment" />
+    </fragment>
+</navigation>

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/phoneNumberFragment"
-        android:name="nellStudios.tech.pi.ui.fragments.PhoneNumberFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Auth.PhoneNumberFragment"
         android:label="PhoneNumberFragment" >
         <action
             android:id="@+id/action_phoneNumberFragment_to_codeVerificationFragment"
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/codeVerificationFragment"
-        android:name="nellStudios.tech.pi.ui.fragments.CodeVerificationFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Auth.CodeVerificationFragment"
         android:label="CodeVerificationFragment" >
         <argument
             android:name="mobile_number"

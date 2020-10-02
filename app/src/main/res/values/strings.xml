@@ -6,4 +6,9 @@
     <string name="verify">Verify</string>
     <string name="mobile_number">mobile_number</string>
     <string name="userArgument">user</string>
+    <string name="hi_divyansh">Hi, Divyansh</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="downloads">Downloads</string>
+    <string name="profile">Profile</string>
 </resources>

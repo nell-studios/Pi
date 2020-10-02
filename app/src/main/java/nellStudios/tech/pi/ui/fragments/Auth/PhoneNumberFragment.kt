@@ -1,4 +1,4 @@
-package nellStudios.tech.pi.ui.fragments
+package nellStudios.tech.pi.ui.fragments.Auth
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_phone_number.*
 import nellStudios.tech.pi.R
+import nellStudios.tech.pi.ui.fragments.BaseFragment
 import nellStudios.tech.pi.utils.Validators.Companion.isValid
 
 class PhoneNumberFragment: BaseFragment() {

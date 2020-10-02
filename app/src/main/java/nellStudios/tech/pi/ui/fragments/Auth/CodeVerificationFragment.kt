@@ -1,4 +1,4 @@
-package nellStudios.tech.pi.ui.fragments
+package nellStudios.tech.pi.ui.fragments.Auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,6 +19,8 @@ import nellStudios.tech.pi.R
 import nellStudios.tech.pi.models.User
 import nellStudios.tech.pi.ui.activities.AuthActivity
 import nellStudios.tech.pi.ui.activities.MainActivity
+import nellStudios.tech.pi.ui.fragments.BaseFragment
+import nellStudios.tech.pi.viewmodels.AuthViewModel
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -31,6 +33,7 @@ class CodeVerificationFragment: BaseFragment() {
     lateinit var firebaseAuth: FirebaseAuth
 
     private val args: CodeVerificationFragmentArgs by navArgs()
+    lateinit var viewModel: AuthViewModel
 
     private var mVerificationId: String = ""
 
@@ -42,6 +45,7 @@ class CodeVerificationFragment: BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel = (activity as AuthActivity).viewModel
         sendCode()
     }
 
@@ -92,8 +96,8 @@ class CodeVerificationFragment: BaseFragment() {
             phoneNumber = "+91" + args.mobileNumber
             uid = firebaseUser?.uid
         }
-        (activity as AuthActivity).viewModel.createUser(user)
-        (activity as AuthActivity).viewModel.createdUserLiveData?.observe(viewLifecycleOwner, Observer {
+        viewModel.createUser(user)
+        viewModel.createdUserLiveData?.observe(viewLifecycleOwner, Observer {
             if (it.isCreated!!) {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
                 intent.putExtra(getString(R.string.userArgument), it)
