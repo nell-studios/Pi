@@ -8,16 +8,19 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import dagger.hilt.android.AndroidEntryPoint
 import nellStudios.tech.pi.R
+import nellStudios.tech.pi.databinding.ActivitySplashBinding
 import nellStudios.tech.pi.viewmodels.SplashViewModel
 
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
 
-    val viewModel: SplashViewModel by viewModels()
+    private val viewModel: SplashViewModel by viewModels()
+    private lateinit var binding: ActivitySplashBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+        binding = ActivitySplashBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         checkIfUserIsAuthenticated()
     }
 

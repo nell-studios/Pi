@@ -16,4 +16,6 @@
     <string name="explore">Explore</string>
     <string name="continue_watching">Continue Watching</string>
     <string name="subscriptions">Subscriptions</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="account">Account</string>
 </resources>

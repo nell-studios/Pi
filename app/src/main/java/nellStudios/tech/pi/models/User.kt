@@ -8,6 +8,7 @@ data class User(
     @SuppressWarnings
     var email: String? = null,
     var phoneNumber: String? = null,
+    var profileImageUrl: String? = null,
     var isAuthenticated: Boolean? = null,
     var isNew: Boolean? = null,
     var isCreated: Boolean? = null,

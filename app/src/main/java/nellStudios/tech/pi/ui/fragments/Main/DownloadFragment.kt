@@ -6,20 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import dagger.hilt.android.AndroidEntryPoint
 import nellStudios.tech.pi.R
+import nellStudios.tech.pi.databinding.FragmentDownloadBinding
 import nellStudios.tech.pi.ui.fragments.BaseFragment
 import nellStudios.tech.pi.ui.fragments.MainBaseFragment
 
 @AndroidEntryPoint
 class DownloadFragment: MainBaseFragment() {
 
+    private lateinit var binding: FragmentDownloadBinding
+
     override fun provideView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? = inflater.inflate(R.layout.fragment_download, container, false)
+    ): View? {
+        binding = FragmentDownloadBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setupTitle(getString(R.string.downloads))
+        activityBinding.titleText.text = getString(R.string.downloads)
     }
 }
