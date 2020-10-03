@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_profile.*
@@ -35,5 +36,11 @@ class ProfileFragment: MainBaseFragment() {
         (activity as MainActivity).fetchUser()
         Glide.with(this).load(user.profileImageUrl).into(profileImage)
         binding.user = user
+        binding.editProfile.setOnClickListener {
+            val bundle = Bundle().apply {
+                putSerializable(getString(R.string.userArgument), user)
+            }
+            findNavController().navigate(R.id.action_profileFragment2_to_edtiProfileFragment, bundle)
+        }
     }
 }

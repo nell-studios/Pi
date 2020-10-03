@@ -20,4 +20,6 @@
     <string name="account">Account</string>
     <string name="email">Email</string>
     <string name="phone_number">Phone Number</string>
+    <string name="change">Change</string>
+    <string name="save">Save</string>
 </resources>

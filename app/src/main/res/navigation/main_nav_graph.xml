@@ -18,7 +18,11 @@
     <fragment
         android:id="@+id/edtiProfileFragment"
         android:name="nellStudios.tech.pi.ui.fragments.Main.EdtiProfileFragment"
-        android:label="EdtiProfileFragment" />
+        android:label="EdtiProfileFragment" >
+        <argument
+            android:name="user"
+            app:argType="nellStudios.tech.pi.models.User" />
+    </fragment>
     <fragment
         android:id="@+id/profileFragment2"
         android:name="nellStudios.tech.pi.ui.fragments.Main.ProfileFragment"

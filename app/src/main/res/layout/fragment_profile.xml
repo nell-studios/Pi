@@ -37,20 +37,12 @@
                     />
 
                 <TextView
+                    app:layout_constraintBaseline_toBaselineOf="@id/profileImage"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/profileImage"
+                    android:gravity="center_vertical"
                     android:text="@{user.name}"
                     style="@style/InfoTextStyle"
-                    />
-
-                <Button
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    android:background="@drawable/rounded_btn_white"
-                    android:text="@string/edit_profile"
-                    android:padding="10dp"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -98,16 +90,20 @@
                     />
 
                 <View
-                    android:layout_height="1dp"
+                    android:id="@+id/separator"
+                    android:layout_height="2dp"
                     android:layout_width="match_parent"
+                    android:background="@color/colorAccent"
+                    android:layout_marginTop="10dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/emailDescriptor"
                     />
 
                 <TextView
-                    app:layout_constraintTop_toBottomOf="@id/email"
+                    app:layout_constraintTop_toBottomOf="@id/separator"
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="@{user.phoneNumber}"
+                    android:layout_marginTop="10dp"
                     android:id="@+id/phoneNumber"
                     style="@style/InfoTextStyle"
                     />
@@ -131,6 +127,20 @@
             app:layout_constraintTop_toBottomOf="@id/AccountCardView"
             app:layout_constraintStart_toStartOf="parent"
             android:padding="20dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editProfile"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@color/colorAccent"
+            android:src="@drawable/ic_baseline_edit_24"
+            android:tint="@android:color/white"
+            android:text="@string/edit_profile"
+            android:padding="10dp"
+            android:layout_margin="20dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
