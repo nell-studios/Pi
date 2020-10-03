@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import nellStudios.tech.pi.R
 import nellStudios.tech.pi.databinding.FragmentHomeBinding
+import nellStudios.tech.pi.ui.activities.MainActivity
 import nellStudios.tech.pi.ui.fragments.BaseFragment
 import nellStudios.tech.pi.ui.fragments.MainBaseFragment
 
@@ -23,9 +24,9 @@ class HomeScreenFragment: MainBaseFragment() {
         return binding.root
     }
 
-    @SuppressLint("SetTextI18n")
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as MainActivity).fetchUser()
         if (user.name == null) activityBinding.titleText.text = "Hi, ${user.phoneNumber}"
         else activityBinding.titleText.text = user.name
     }

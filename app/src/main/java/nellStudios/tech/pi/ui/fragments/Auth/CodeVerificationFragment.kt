@@ -100,7 +100,7 @@ class CodeVerificationFragment: BaseFragment() {
         viewModel.createdUserLiveData?.observe(viewLifecycleOwner, Observer {
             if (it.isCreated!!) {
                 val intent = Intent(requireActivity(), MainActivity::class.java)
-                intent.putExtra(getString(R.string.userArgument), it)
+                intent.putExtra("uid", firebaseUser?.uid)
                 startActivity(intent)
                 requireActivity().finish()
             } else Toast.makeText(context, "User Not Created", Toast.LENGTH_SHORT).show()

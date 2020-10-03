@@ -42,7 +42,7 @@ class SplashActivity : AppCompatActivity() {
         viewModel.setPhoneNumber(uid)
         viewModel.userLiveData?.observe(this, Observer {
             val intent = Intent(this@SplashActivity, MainActivity::class.java)
-            intent.putExtra(getString(R.string.userArgument), it)
+            intent.putExtra("uid", uid)
             startActivity(intent)
             finish()
         })

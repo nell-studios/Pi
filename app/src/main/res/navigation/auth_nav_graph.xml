@@ -30,7 +30,7 @@
         android:label="activity_main"
         tools:layout="@layout/activity_main" >
         <argument
-            android:name="user"
-            app:argType="nellStudios.tech.pi.models.User" />
+            android:name="uid"
+            app:argType="string" />
     </activity>
 </navigation>
