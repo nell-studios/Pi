@@ -37,13 +37,10 @@
                     />
 
                 <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toEndOf="@id/profileImage"
                     android:text="@{user.name}"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
+                    style="@style/InfoTextStyle"
                     />
 
                 <Button
@@ -62,12 +59,8 @@
 
         <TextView
             android:id="@+id/accountText"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            style="@style/HeaderTextStyle"
             android:text="@string/account"
-            android:textStyle="bold"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
             app:layout_constraintTop_toBottomOf="@id/ProfileCardview"
             app:layout_constraintStart_toStartOf="parent"
             android:padding="20dp"
@@ -91,28 +84,54 @@
 
                 <TextView
                     android:id="@+id/email"
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
+                    style="@style/InfoTextStyle"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="@{user.email}"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
+                    />
+                <TextView
+                    android:id="@+id/emailDescriptor"
+                    style="@style/SubTextStyle"
+                    app:layout_constraintTop_toBottomOf="@id/email"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/email"
+                    />
+
+                <View
+                    android:layout_height="1dp"
+                    android:layout_width="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/emailDescriptor"
                     />
 
                 <TextView
-                    android:layout_height="wrap_content"
-                    android:layout_width="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/email"
                     app:layout_constraintStart_toStartOf="parent"
                     android:text="@{user.phoneNumber}"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
+                    android:id="@+id/phoneNumber"
+                    style="@style/InfoTextStyle"
+                    />
+
+                <TextView
+                    android:id="@+id/phoneNumberDescriptor"
+                    style="@style/SubTextStyle"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumber"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:text="@string/phone_number"
                     />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/settingText"
+            style="@style/HeaderTextStyle"
+            android:text="Settings"
+            app:layout_constraintTop_toBottomOf="@id/AccountCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            android:padding="20dp"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

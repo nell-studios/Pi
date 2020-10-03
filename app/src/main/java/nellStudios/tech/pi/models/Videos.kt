@@ -7,5 +7,6 @@ data class Videos(
     var description: String? = null,
     var cuepoint: String? = null,
     var videoUrl: String? = null,
-    var thumbnailUrl: String? = null
+    var thumbnailUrl: String? = null,
+    var topic: String? = null
 ): Serializable

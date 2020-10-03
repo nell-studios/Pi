@@ -18,4 +18,6 @@
     <string name="subscriptions">Subscriptions</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="account">Account</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone Number</string>
 </resources>

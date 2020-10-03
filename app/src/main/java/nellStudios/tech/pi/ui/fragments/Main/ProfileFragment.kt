@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import com.bumptech.glide.Glide
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.fragment_profile.*
 import nellStudios.tech.pi.R
 import nellStudios.tech.pi.databinding.FragmentProfileBinding
 import nellStudios.tech.pi.models.User
@@ -31,6 +33,7 @@ class ProfileFragment: MainBaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         activityBinding.titleText.text = getString(R.string.profile)
         (activity as MainActivity).fetchUser()
+        Glide.with(this).load(user.profileImageUrl).into(profileImage)
         binding.user = user
     }
 }
