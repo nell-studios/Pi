@@ -131,7 +131,9 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 
-
+    //Exo Player
+    implementation 'com.google.android.exoplayer:exoplayer:2.10.8'
+    implementation 'com.google.android.exoplayer:extension-mediasession:2.10.8'
 }
 
 apply plugin: 'com.google.gms.google-services'

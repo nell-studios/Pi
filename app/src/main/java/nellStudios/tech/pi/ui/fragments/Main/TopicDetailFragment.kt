@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,6 +38,13 @@ class TopicDetailFragment: MainBaseFragment() {
 
     private fun setupRecyclerView() {
         topicDetailsAdapter.differ.submitList(args.topic.videos)
+        topicDetailsAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("video", it)
+            }
+
+            findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
+        }
         rvTopicVideos.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = topicDetailsAdapter

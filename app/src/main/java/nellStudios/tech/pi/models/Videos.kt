@@ -9,6 +9,6 @@ data class Videos(
     var thumbnailUrl: String = "https://firebasestorage.googleapis.com/v0/b/pi-maths.appspot.com/o/placeholder.png?alt=media&token=8766ba69-24ee-47ae-bb14-3efafdd2eb83",
     var topicName: String? = null,
     var videoNumber: Int? = null,
-    var nextVideoUrl: String? = null,
-    var previousVideoUrl: String? = null
+    var nextVideo: Videos? = null,
+    var previousVideo: Videos? = null
 ): Serializable

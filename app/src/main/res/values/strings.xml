@@ -22,4 +22,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="change">Change</string>
     <string name="save">Save</string>
+    <string name="previous_video">Previous Video</string>
+    <string name="speed">1x</string>
+    <string name="quality">Auto</string>
 </resources>

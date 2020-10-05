@@ -81,5 +81,9 @@
         android:id="@+id/videoPlayerActivity"
         android:name="nellStudios.tech.pi.ui.activities.VideoPlayerActivity"
         android:label="activity_video_player"
-        tools:layout="@layout/activity_video_player" />
+        tools:layout="@layout/activity_video_player" >
+        <argument
+            android:name="video"
+            app:argType="nellStudios.tech.pi.models.Videos" />
+    </activity>
 </navigation>
