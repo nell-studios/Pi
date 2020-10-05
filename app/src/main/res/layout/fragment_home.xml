@@ -68,7 +68,7 @@
                     />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvDownloaded"
+                    android:id="@+id/rvContinueWatching"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     app:layout_constraintStart_toStartOf="parent"

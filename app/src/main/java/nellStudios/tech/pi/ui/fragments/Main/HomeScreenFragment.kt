@@ -1,6 +1,5 @@
 package nellStudios.tech.pi.ui.fragments.Main
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,9 +17,10 @@ import nellStudios.tech.pi.R
 import nellStudios.tech.pi.databinding.FragmentHomeBinding
 import nellStudios.tech.pi.models.Topic
 import nellStudios.tech.pi.models.Videos
+import nellStudios.tech.pi.models.WatchedVideos
 import nellStudios.tech.pi.ui.activities.MainActivity
+import nellStudios.tech.pi.ui.adapters.ContinueWatchingAdapter
 import nellStudios.tech.pi.ui.adapters.ExploreTopicsAdapter
-import nellStudios.tech.pi.ui.fragments.BaseFragment
 import nellStudios.tech.pi.ui.fragments.MainBaseFragment
 import nellStudios.tech.pi.viewmodels.HomeScreenViewModel
 import javax.inject.Inject
@@ -33,6 +33,8 @@ class HomeScreenFragment: MainBaseFragment() {
 
     @Inject
     lateinit var exploreTopicsAdapter: ExploreTopicsAdapter
+    @Inject
+    lateinit var continueWatchingAdapter: ContinueWatchingAdapter
 
     override fun provideView(
         inflater: LayoutInflater,
@@ -45,9 +47,7 @@ class HomeScreenFragment: MainBaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        (activity as MainActivity).fetchUser()
-        if (user.name == null) activityBinding.titleText.text = "Hi, ${user.phoneNumber}"
-        else activityBinding.titleText.text = user.name
+        fetchUser()
 
         binding.apply {
             continueWatchingSeeMore.setOnClickListener { findNavController().navigate(R.id.action_homeScreenFragment_to_continueWatchingFragment) }
@@ -69,6 +69,10 @@ class HomeScreenFragment: MainBaseFragment() {
         }
         viewModel.setTopic(topic)
 
+        setupExploreRecyclerView()
+    }
+
+    private fun setupExploreRecyclerView() {
         viewModel.fetchTopicsList()
         viewModel.topicsList.observe(viewLifecycleOwner, Observer {
             Toast.makeText(context, "Fetched", Toast.LENGTH_SHORT).show()
@@ -85,5 +89,29 @@ class HomeScreenFragment: MainBaseFragment() {
                 adapter = exploreTopicsAdapter
             }
         })
+    }
+
+    private fun fetchUser() {
+        activityViewModel.getUser((activity as MainActivity).args.uid)
+        activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
+            if (user.name == null) activityBinding.titleText.text = "Hi, ${user.phoneNumber}"
+            else activityBinding.titleText.text = user.name
+            setupContinueWatchingReyclerView()
+        })
+    }
+
+    private fun setupContinueWatchingReyclerView() {
+        continueWatchingAdapter.differ.submitList(user.watched)
+        continueWatchingAdapter.setOnItemClickListener {
+            val bundle = Bundle().apply {
+                putSerializable("video", it.video)
+                putSerializable("user", user)
+            }
+            findNavController().navigate(R.id.action_homeScreenFragment_to_videoPlayerActivity, bundle)
+        }
+        rvContinueWatching.apply {
+            layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
+            adapter = continueWatchingAdapter
+        }
     }
 }

@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import nellStudios.tech.pi.ui.adapters.ContinueWatchingAdapter
 import nellStudios.tech.pi.ui.adapters.ExploreTopicsAdapter
 import nellStudios.tech.pi.ui.adapters.TopicDetailsAdapter
 import javax.inject.Singleton
@@ -39,4 +40,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideTopicVideosAdapter(): TopicDetailsAdapter = TopicDetailsAdapter()
+
+    @Singleton
+    @Provides
+    fun provideContinueWatchingAdapter(): ContinueWatchingAdapter = ContinueWatchingAdapter()
 }

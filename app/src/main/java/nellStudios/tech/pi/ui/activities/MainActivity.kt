@@ -28,7 +28,7 @@ import nellStudios.tech.pi.viewmodels.MainViewModel
 class MainActivity : AppCompatActivity() {
 
     var user: User = User()
-    private val args: MainActivityArgs by navArgs()
+    val args: MainActivityArgs by navArgs()
     lateinit var binding: ActivityMainBinding
     val viewModel: MainViewModel by viewModels()
 
