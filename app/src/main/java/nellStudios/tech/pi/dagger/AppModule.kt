@@ -9,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
 import nellStudios.tech.pi.ui.adapters.ExploreTopicsAdapter
+import nellStudios.tech.pi.ui.adapters.TopicDetailsAdapter
 import javax.inject.Singleton
 
 @Module
@@ -34,4 +35,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideExploreAdapter(): ExploreTopicsAdapter = ExploreTopicsAdapter()
+
+    @Singleton
+    @Provides
+    fun provideTopicVideosAdapter(): TopicDetailsAdapter = TopicDetailsAdapter()
 }

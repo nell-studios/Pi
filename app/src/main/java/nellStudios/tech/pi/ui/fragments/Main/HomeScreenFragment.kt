@@ -74,6 +74,12 @@ class HomeScreenFragment: MainBaseFragment() {
             Toast.makeText(context, "Fetched", Toast.LENGTH_SHORT).show()
             Log.i("HOME", it.toString())
             exploreTopicsAdapter.differ.submitList(it)
+            exploreTopicsAdapter.setOnItemClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable("topic", it)
+                }
+                findNavController().navigate(R.id.action_homeScreenFragment_to_topicDetailFragment, bundle)
+            }
             rvExplore.apply {
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 adapter = exploreTopicsAdapter

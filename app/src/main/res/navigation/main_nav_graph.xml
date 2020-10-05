@@ -73,6 +73,9 @@
         <action
             android:id="@+id/action_topicDetailFragment_to_videoPlayerActivity"
             app:destination="@id/videoPlayerActivity" />
+        <argument
+            android:name="topic"
+            app:argType="nellStudios.tech.pi.models.Topic" />
     </fragment>
     <activity
         android:id="@+id/videoPlayerActivity"

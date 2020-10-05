@@ -40,6 +40,17 @@ class ExploreTopicsAdapter: RecyclerView.Adapter<ExploreTopicsAdapter.TopicsView
             Glide.with(this).load(topic.bannerImageUrl).into(backgroundImage)
             topicName.text = topic.topicName
             topicContents.text = topic.size.toString()
+            setOnClickListener {
+                onItemClickListener?.let{
+                    it(topic)
+                }
+            }
         }
+    }
+
+    private var onItemClickListener: ((Topic) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Topic) -> Unit) {
+        onItemClickListener = listener
     }
 }
