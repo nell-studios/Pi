@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/main_nav_graph"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
     app:startDestination="@id/homeScreenFragment">
 
     <fragment
         android:id="@+id/homeScreenFragment"
         android:name="nellStudios.tech.pi.ui.fragments.Main.HomeScreenFragment"
-        android:label="HomeScreenFragment" />
+        android:label="HomeScreenFragment" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_continueWatchingFragment"
+            app:destination="@id/continueWatchingFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_exploreDetailFragment"
+            app:destination="@id/exploreDetailFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_topicDetailFragment"
+            app:destination="@id/topicDetailFragment" />
+        <action
+            android:id="@+id/action_homeScreenFragment_to_videoPlayerActivity"
+            app:destination="@id/videoPlayerActivity" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="nellStudios.tech.pi.ui.fragments.Main.SearchFragment"
-        android:label="SearchFragment" />
+        android:label="SearchFragment" >
+        <action
+            android:id="@+id/action_searchFragment_to_videoPlayerActivity"
+            app:destination="@id/videoPlayerActivity" />
+    </fragment>
     <fragment
         android:id="@+id/downloadFragment"
         android:name="nellStudios.tech.pi.ui.fragments.Main.DownloadFragment"
-        android:label="DownloadFragment" />
+        android:label="DownloadFragment" >
+        <action
+            android:id="@+id/action_downloadFragment_to_videoPlayerActivity"
+            app:destination="@id/videoPlayerActivity" />
+    </fragment>
     <fragment
         android:id="@+id/edtiProfileFragment"
         android:name="nellStudios.tech.pi.ui.fragments.Main.EdtiProfileFragment"
@@ -31,4 +54,29 @@
             android:id="@+id/action_profileFragment2_to_edtiProfileFragment"
             app:destination="@id/edtiProfileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/continueWatchingFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.ContinueWatchingFragment"
+        android:label="ContinueWatchingFragment" >
+        <action
+            android:id="@+id/action_continueWatchingFragment_to_videoPlayerActivity"
+            app:destination="@id/videoPlayerActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreDetailFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.ExploreDetailFragment"
+        android:label="ExploreDetailFragment" />
+    <fragment
+        android:id="@+id/topicDetailFragment"
+        android:name="nellStudios.tech.pi.ui.fragments.Main.TopicDetailFragment"
+        android:label="TopicDetailFragment" >
+        <action
+            android:id="@+id/action_topicDetailFragment_to_videoPlayerActivity"
+            app:destination="@id/videoPlayerActivity" />
+    </fragment>
+    <activity
+        android:id="@+id/videoPlayerActivity"
+        android:name="nellStudios.tech.pi.ui.activities.VideoPlayerActivity"
+        android:label="activity_video_player"
+        tools:layout="@layout/activity_video_player" />
 </navigation>

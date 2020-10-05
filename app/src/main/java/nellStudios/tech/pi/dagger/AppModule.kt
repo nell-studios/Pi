@@ -8,6 +8,7 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ApplicationComponent
+import nellStudios.tech.pi.ui.adapters.ExploreTopicsAdapter
 import javax.inject.Singleton
 
 @Module
@@ -29,4 +30,8 @@ object AppModule {
     @Singleton
     @Provides
     fun provideFirebaseStorage(): FirebaseStorage = FirebaseStorage.getInstance()
+
+    @Singleton
+    @Provides
+    fun provideExploreAdapter(): ExploreTopicsAdapter = ExploreTopicsAdapter()
 }

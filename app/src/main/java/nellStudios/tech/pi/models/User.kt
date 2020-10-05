@@ -12,6 +12,6 @@ data class User(
     var isAuthenticated: Boolean? = null,
     var isNew: Boolean? = null,
     var isCreated: Boolean? = null,
-    var watched: List<Videos>? = null,
+    var watched: List<WatchedVideos>? = null,
     var downloaded: List<Videos>? = null
 ) : Serializable
