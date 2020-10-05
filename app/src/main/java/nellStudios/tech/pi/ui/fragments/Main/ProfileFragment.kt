@@ -43,16 +43,18 @@ class ProfileFragment: MainBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activityBinding.titleText.text = getString(R.string.profile)
-        (activity as MainActivity).fetchUser()
-        Glide.with(this).load(user.profileImageUrl).into(profileImage)
-        binding.user = user
-        binding.editProfile.setOnClickListener {
-            val bundle = Bundle().apply {
-                putSerializable(getString(R.string.userArgument), user)
+        fetchUser()
+        activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
+            Glide.with(this).load(user.profileImageUrl).into(profileImage)
+            binding.user = user
+            binding.editProfile.setOnClickListener {
+                val bundle = Bundle().apply {
+                    putSerializable(getString(R.string.userArgument), user)
+                }
+                findNavController().navigate(R.id.action_profileFragment2_to_edtiProfileFragment, bundle)
             }
-            findNavController().navigate(R.id.action_profileFragment2_to_edtiProfileFragment, bundle)
-        }
-        binding.profileImage.setOnClickListener {selectImage()}
+            binding.profileImage.setOnClickListener {selectImage()}
+        })
     }
 
     private fun selectImage() {
@@ -76,7 +78,7 @@ class ProfileFragment: MainBaseFragment() {
                     viewModel.successfullUpload.observe(viewLifecycleOwner, Observer {
                         if (it) {
                             Snackbar.make(requireView(), "File Uploaded", Snackbar.LENGTH_SHORT).show()
-                            (activity as MainActivity).fetchUser()
+                            fetchUser()
                         }
                         else Snackbar.make(requireView(), "Some Error Occured", Snackbar.LENGTH_SHORT).show()
                     })

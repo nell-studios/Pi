@@ -47,8 +47,7 @@ class HomeScreenFragment: MainBaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        fetchUser()
-
+        setupObservers()
         binding.apply {
             continueWatchingSeeMore.setOnClickListener { findNavController().navigate(R.id.action_homeScreenFragment_to_continueWatchingFragment) }
             exploreSeeMore.setOnClickListener { findNavController().navigate(R.id.action_homeScreenFragment_to_exploreDetailFragment) }
@@ -72,6 +71,12 @@ class HomeScreenFragment: MainBaseFragment() {
         setupExploreRecyclerView()
     }
 
+    private fun setupObservers() {
+        activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
+            setupContinueWatchingReyclerView()
+        })
+    }
+
     private fun setupExploreRecyclerView() {
         viewModel.fetchTopicsList()
         viewModel.topicsList.observe(viewLifecycleOwner, Observer {
@@ -88,15 +93,6 @@ class HomeScreenFragment: MainBaseFragment() {
                 layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
                 adapter = exploreTopicsAdapter
             }
-        })
-    }
-
-    private fun fetchUser() {
-        activityViewModel.getUser((activity as MainActivity).args.uid)
-        activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
-            if (user.name == null) activityBinding.titleText.text = "Hi, ${user.phoneNumber}"
-            else activityBinding.titleText.text = user.name
-            setupContinueWatchingReyclerView()
         })
     }
 

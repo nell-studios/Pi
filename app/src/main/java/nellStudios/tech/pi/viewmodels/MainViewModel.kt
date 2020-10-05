@@ -12,7 +12,7 @@ class MainViewModel @ViewModelInject constructor(
 ): ViewModel() {
 
     var successfullGet: LiveData<User> = MutableLiveData()
-    var user: User = User()
+    var user: LiveData<User> = MutableLiveData()
 
     fun getUser(uid: String) {
         successfullGet = mainRepository.fetchUserDetails(uid)

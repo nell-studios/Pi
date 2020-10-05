@@ -35,8 +35,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        fetchUser()
-        binding.mainSwipe.setOnRefreshListener { fetchUser() }
         bottomNavigationView.setupWithNavController(navHostFragment.findNavController())
         val profileItem = bottomNavigationView.menu.findItem(R.id.profileFragment2)
         Glide.with(this)
@@ -53,17 +51,5 @@ class MainActivity : AppCompatActivity() {
                     profileItem?.icon = BitmapDrawable(resources, resource)
                 }
             })
-    }
-
-    @SuppressLint("SetTextI18n")
-    fun fetchUser() {
-        binding.mainSwipe.isRefreshing = true
-        viewModel.getUser(args.uid)
-        viewModel.successfullGet.observe(this, Observer {
-            binding.mainSwipe.isRefreshing = false
-            user = it
-            if (user.name == null) binding.titleText.text = "Hi, ${user.phoneNumber}"
-            else binding.titleText.text = user.name
-        })
     }
 }
