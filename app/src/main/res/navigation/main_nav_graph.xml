@@ -85,5 +85,8 @@
         <argument
             android:name="video"
             app:argType="nellStudios.tech.pi.models.Videos" />
+        <argument
+            android:name="user"
+            app:argType="nellStudios.tech.pi.models.User" />
     </activity>
 </navigation>

@@ -41,6 +41,7 @@ class TopicDetailFragment: MainBaseFragment() {
         topicDetailsAdapter.setOnItemClickListener {
             val bundle = Bundle().apply {
                 putSerializable("video", it)
+                putSerializable("user", user)
             }
 
             findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
