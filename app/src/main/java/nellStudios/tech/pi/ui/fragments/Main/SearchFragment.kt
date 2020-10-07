@@ -72,7 +72,7 @@ class SearchFragment: MainBaseFragment() {
             val bundle = Bundle().apply {
                 putSerializable("topic", it)
             }
-            findNavController().navigate(R.id.action_searchFragment_to_topicDetailFragment)
+            findNavController().navigate(R.id.action_searchFragment_to_topicDetailFragment, bundle)
         }
         searchRecyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)

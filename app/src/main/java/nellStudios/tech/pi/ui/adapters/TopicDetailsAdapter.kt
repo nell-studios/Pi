@@ -45,12 +45,22 @@ class TopicDetailsAdapter: RecyclerView.Adapter<TopicDetailsAdapter.VideoViewHol
                     it(video)
                 }
             }
+            setOnDownloadClickListener {
+                onDownloadClickListener?.let {
+                    it(video)
+                }
+            }
         }
     }
 
     private var onItemClickListener: ((Videos) -> Unit)? = null
+    private var onDownloadClickListener: ((Videos) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Videos) -> Unit) {
         onItemClickListener = listener
+    }
+
+    fun setOnDownloadClickListener(listener: (Videos) -> Unit) {
+        onDownloadClickListener = listener
     }
 }
