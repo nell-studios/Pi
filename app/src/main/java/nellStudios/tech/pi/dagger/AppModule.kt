@@ -35,10 +35,6 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun provideExploreAdapter(): ExploreTopicsAdapter = ExploreTopicsAdapter()
-
-    @Singleton
-    @Provides
     fun provideTopicVideosAdapter(): TopicDetailsAdapter = TopicDetailsAdapter()
 
     @Singleton

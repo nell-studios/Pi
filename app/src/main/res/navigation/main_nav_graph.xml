@@ -32,6 +32,12 @@
         <action
             android:id="@+id/action_searchFragment_to_videoPlayerActivity"
             app:destination="@id/videoPlayerActivity" />
+        <action
+            android:id="@+id/action_searchFragment_to_exploreDetailFragment"
+            app:destination="@id/exploreDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_topicDetailFragment"
+            app:destination="@id/topicDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
