@@ -47,9 +47,9 @@ class ContinueWatchingAdapter: RecyclerView.Adapter<ContinueWatchingAdapter.Vide
         val topic = differ.currentList[position]
         holder.itemView.apply {
             Glide.with(this).load(topic.bannerImageUrl).into(thumbnailImage)
-            watchedPercentage.progress = topic.progress?.find {
-                it.userId.equals(auth.currentUser?.uid)
-            }!!.watchedPercentage?.toInt()!!
+//            watchedPercentage.progress = topic.progress?.find {
+//                it.userId.equals(auth.currentUser?.uid)
+//            }!!.watchedPercentage?.toInt()!!
             setOnClickListener {
                 onItemClickListener?.let{
                     it(topic)

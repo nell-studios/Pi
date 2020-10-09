@@ -66,9 +66,6 @@ class HomeScreenFragment: MainBaseFragment() {
         activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
             setupContinueWatchingReyclerView()
         })
-        viewModel.topicsList.observe(viewLifecycleOwner, Observer {
-            continueWatchingAdapter.differ.submitList(it)
-        })
     }
 
     private fun setupExploreRecyclerView() {
@@ -100,6 +97,9 @@ class HomeScreenFragment: MainBaseFragment() {
 //        }
         if (user.watched != null) {
             viewModel.getTopicbyUid(user.watched!!)
+            viewModel.topicsList.observe(viewLifecycleOwner, Observer {
+                continueWatchingAdapter.differ.submitList(it)
+            })
         }
         rvContinueWatching.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)

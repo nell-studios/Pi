@@ -4,8 +4,10 @@ import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
+import nellStudios.tech.pi.models.User
 import nellStudios.tech.pi.models.Videos
 import nellStudios.tech.pi.utils.Constants.Companion.TOPICS
+import nellStudios.tech.pi.utils.Constants.Companion.USERS
 import nellStudios.tech.pi.utils.Constants.Companion.VIDEOS
 import java.io.File
 import javax.inject.Inject
@@ -17,6 +19,7 @@ class TopicDetailRepository @Inject constructor(
 
     private val topicsRef = db.collection(TOPICS)
     private val videosRef = db.collection(VIDEOS)
+    private val usersRef = db.collection(USERS)
 
     fun downloadFile(video: Videos): MutableLiveData<Boolean> {
         val downloaded: MutableLiveData<Boolean> = MutableLiveData()
@@ -29,6 +32,26 @@ class TopicDetailRepository @Inject constructor(
             downloaded.value = false
         }
         return downloaded
+    }
+
+    fun addToContinueWatching(topicName: String, uid: String): MutableLiveData<Boolean> {
+        val successFull: MutableLiveData<Boolean> = MutableLiveData()
+        usersRef.document(uid).get().addOnSuccessListener {
+            val user = it.toObject(User::class.java)
+            val watched = mutableListOf<String>()
+            if (user?.watched == null) {
+                watched.add(topicName)
+            } else {
+                watched.addAll( user.watched!!)
+                if (!watched.contains(topicName)) {
+                    watched.add(topicName)
+                }
+            }
+            usersRef.document(uid).update("watched", watched).addOnCompleteListener {
+                successFull.value = it.isSuccessful
+            }
+        }
+        return successFull
     }
 
     fun getAllVideos(videos: List<String>): MutableLiveData<List<Videos>> {

@@ -12,7 +12,7 @@ data class User(
     var isAuthenticated: Boolean? = null,
     var isNew: Boolean? = null,
     var isCreated: Boolean? = null,
-    var watched: List<String>? = null,
-    var downloaded: List<String>? = null,
-    var myLibrary: List<String>? = null
+    var watched: MutableList<String>? = null,
+    var downloaded: MutableList<String>? = null,
+    var myLibrary: MutableList<String>? = null
 ) : Serializable

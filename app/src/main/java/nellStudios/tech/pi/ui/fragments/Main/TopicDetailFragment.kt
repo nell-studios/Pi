@@ -51,13 +51,12 @@ class TopicDetailFragment: MainBaseFragment() {
                 putSerializable("video", it)
                 putSerializable("user", user)
             }
-//            viewModel.download(it)
-//            viewModel.successfull.observe(viewLifecycleOwner, Observer {
-//                if (it) Snackbar.make(requireView(), "File Downloaded Successfully", Snackbar.LENGTH_SHORT).show()
-//                else Snackbar.make(requireView(), "File Download Failed", Snackbar.LENGTH_SHORT).show()
-//            })
 
-            findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
+            viewModel.addToContinueWatching(args.topic.topicName!!, user.uid!!)
+            viewModel.successfull.observe(viewLifecycleOwner, Observer {
+                if (it) findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
+            })
+
         }
         topicDetailsAdapter.setOnDownloadClickListener {
 
