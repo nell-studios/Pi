@@ -352,6 +352,12 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
         if (playbackState == Player.STATE_READY) {
             exoPlayerView.videoSurfaceView.visibility = View.VISIBLE
         }
+//        if (playbackState == Player.STATE_ENDED) {
+//            viewModel.saveWatchedDuration(args.user.uid!!, args.video.topicName!!)
+//            viewModel.successfull.observe(this, Observer {
+//                if (it) onStop()
+//            })
+//        }
     }
 
 
@@ -433,7 +439,6 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
 //            updateWatchedValue(content)
 //        }
         playOrPausePlayer(false)
-//        saveWatchedDuration()
         unRegisterMediaSession()
         super.onStop()
     }
@@ -478,21 +483,6 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
         mediaSession.release()
         mediaSessionConnector.setPlayer(null)
     }
-
-//    fun saveWatchedDuration() {
-//        val watchedVideo = WatchedTopics().apply {
-//            video = args.video
-//            watchedDuration = player.currentPosition
-//            watchedPercentage = (player.currentPosition / player.duration) * 100
-//        }
-//        val modifiedUser = args.user.copy(
-//            watched = listOf(watchedVideo)
-//        )
-//        viewModel.saveWatchedDuration(modifiedUser)
-//        viewModel.successfull.observe(this, Observer {
-//            if (it) Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
-//        })
-//    }
 
     fun isVideoPlaying(): Boolean{
         return isVideoPlaying

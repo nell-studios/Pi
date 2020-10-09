@@ -13,7 +13,7 @@ class PlayerViewModel @ViewModelInject constructor(
 
     var successfull: LiveData<Boolean> = MutableLiveData()
 
-    fun saveWatchedDuration(user: User) {
-        successfull = repo.saveWatchedVideoDuration(user)
+    fun saveWatchedDuration(uid: String, topicName: String) {
+        successfull = repo.saveWatchedVideoDuration(uid, topicName)
     }
 }

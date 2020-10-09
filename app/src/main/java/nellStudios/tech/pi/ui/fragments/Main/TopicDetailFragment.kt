@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.snackbar.Snackbar
@@ -50,13 +51,13 @@ class TopicDetailFragment: MainBaseFragment() {
                 putSerializable("video", it)
                 putSerializable("user", user)
             }
-            viewModel.download(it)
-            viewModel.successfull.observe(viewLifecycleOwner, Observer {
-                if (it) Snackbar.make(requireView(), "File Downloaded Successfully", Snackbar.LENGTH_SHORT).show()
-                else Snackbar.make(requireView(), "File Download Failed", Snackbar.LENGTH_SHORT).show()
-            })
+//            viewModel.download(it)
+//            viewModel.successfull.observe(viewLifecycleOwner, Observer {
+//                if (it) Snackbar.make(requireView(), "File Downloaded Successfully", Snackbar.LENGTH_SHORT).show()
+//                else Snackbar.make(requireView(), "File Download Failed", Snackbar.LENGTH_SHORT).show()
+//            })
 
-//            findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
+            findNavController().navigate(R.id.action_topicDetailFragment_to_videoPlayerActivity, bundle)
         }
         topicDetailsAdapter.setOnDownloadClickListener {
 
