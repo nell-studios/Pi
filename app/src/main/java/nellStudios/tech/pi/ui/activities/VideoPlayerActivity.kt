@@ -20,8 +20,6 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
 import androidx.navigation.navArgs
 import com.google.android.exoplayer2.*
-import com.google.android.exoplayer2.C.CONTENT_TYPE_MOVIE
-import com.google.android.exoplayer2.C.USAGE_MEDIA
 import com.google.android.exoplayer2.audio.AudioAttributes
 import com.google.android.exoplayer2.ext.mediasession.MediaSessionConnector
 import com.google.android.exoplayer2.source.ExtractorMediaSource
@@ -35,19 +33,12 @@ import com.google.android.exoplayer2.ui.TrackSelectionDialogBuilder
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSource
 import com.google.android.exoplayer2.upstream.DefaultHttpDataSourceFactory
 import com.google.android.exoplayer2.upstream.HttpDataSource
-import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_video_player.*
-import kotlinx.android.synthetic.main.activity_video_player.view.*
-import kotlinx.android.synthetic.main.activity_video_player.view.exoPlayerView
 import kotlinx.android.synthetic.main.exoplayer_custom_controls.*
-import kotlinx.android.synthetic.main.exoplayer_custom_controls.view.*
-import kotlinx.android.synthetic.main.exoplayer_custom_controls.view.episodeName
-import kotlinx.android.synthetic.main.exoplayer_custom_controls.view.nextEpisode
-import kotlinx.android.synthetic.main.exoplayer_custom_controls.view.previousEpisode
 import nellStudios.tech.pi.R
 import nellStudios.tech.pi.models.Videos
-import nellStudios.tech.pi.models.WatchedVideos
+import nellStudios.tech.pi.models.WatchedTopics
 import nellStudios.tech.pi.viewmodels.PlayerViewModel
 import java.net.URLDecoder
 import java.nio.charset.StandardCharsets
@@ -442,7 +433,7 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
 //            updateWatchedValue(content)
 //        }
         playOrPausePlayer(false)
-        saveWatchedDuration()
+//        saveWatchedDuration()
         unRegisterMediaSession()
         super.onStop()
     }
@@ -488,20 +479,20 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
         mediaSessionConnector.setPlayer(null)
     }
 
-    fun saveWatchedDuration() {
-        val watchedVideo = WatchedVideos().apply {
-            video = args.video
-            watchedDuration = player.currentPosition
-            watchedPercentage = (player.currentPosition / player.duration) * 100
-        }
-        val modifiedUser = args.user.copy(
-            watched = listOf(watchedVideo)
-        )
-        viewModel.saveWatchedDuration(modifiedUser)
-        viewModel.successfull.observe(this, Observer {
-            if (it) Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
-        })
-    }
+//    fun saveWatchedDuration() {
+//        val watchedVideo = WatchedTopics().apply {
+//            video = args.video
+//            watchedDuration = player.currentPosition
+//            watchedPercentage = (player.currentPosition / player.duration) * 100
+//        }
+//        val modifiedUser = args.user.copy(
+//            watched = listOf(watchedVideo)
+//        )
+//        viewModel.saveWatchedDuration(modifiedUser)
+//        viewModel.successfull.observe(this, Observer {
+//            if (it) Toast.makeText(this, "Updated", Toast.LENGTH_SHORT).show()
+//        })
+//    }
 
     fun isVideoPlaying(): Boolean{
         return isVideoPlaying

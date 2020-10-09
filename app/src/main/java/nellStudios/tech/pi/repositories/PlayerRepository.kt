@@ -3,7 +3,6 @@ package nellStudios.tech.pi.repositories
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.firestore.FirebaseFirestore
 import nellStudios.tech.pi.models.User
-import nellStudios.tech.pi.models.WatchedVideos
 import nellStudios.tech.pi.utils.Constants.Companion.USERS
 import javax.inject.Inject
 

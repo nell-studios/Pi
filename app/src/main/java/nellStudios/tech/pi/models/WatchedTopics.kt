@@ -2,8 +2,8 @@ package nellStudios.tech.pi.models
 
 import java.io.Serializable
 
-data class WatchedVideos(
+data class WatchedTopics(
     var watchedDuration: Long? = 0,
     var watchedPercentage: Long? = 0,
-    var video: Videos? = null
+    var topic: String? = null
 ): Serializable

@@ -17,8 +17,6 @@ import nellStudios.tech.pi.R
 import nellStudios.tech.pi.databinding.FragmentHomeBinding
 import nellStudios.tech.pi.models.Topic
 import nellStudios.tech.pi.models.Videos
-import nellStudios.tech.pi.models.WatchedVideos
-import nellStudios.tech.pi.ui.activities.MainActivity
 import nellStudios.tech.pi.ui.adapters.ContinueWatchingAdapter
 import nellStudios.tech.pi.ui.adapters.ExploreTopicsAdapter
 import nellStudios.tech.pi.ui.fragments.MainBaseFragment
@@ -53,18 +51,11 @@ class HomeScreenFragment: MainBaseFragment() {
             exploreSeeMore.setOnClickListener { findNavController().navigate(R.id.action_homeScreenFragment_to_exploreDetailFragment) }
         }
 
-        val videosTopic = Videos().apply {
-            title = "Random Topic Video 1"
-            description = "A nice video to test the functionality"
-            topicName = "RandomTopic"
-            videoNumber = 1
-            videoUrl = "https://firebasestorage.googleapis.com/v0/b/pi-maths.appspot.com/o/Screenrecorder-2020-06-25-02-23-07-962.mp4?alt=media&token=f2090123-6621-40e1-8317-c2cb6faf10b9"
-        }
-
         val topic = Topic().apply {
             size = 1
             topicName = "RandomTopic"
-            videos = mutableListOf(videosTopic)
+            videos = mutableListOf(
+                    "S3QC9xmZwElpNVFBtsXB")
         }
         viewModel.setTopic(topic)
 
@@ -74,6 +65,9 @@ class HomeScreenFragment: MainBaseFragment() {
     private fun setupObservers() {
         activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
             setupContinueWatchingReyclerView()
+        })
+        viewModel.topicsList.observe(viewLifecycleOwner, Observer {
+            continueWatchingAdapter.differ.submitList(it)
         })
     }
 
@@ -97,13 +91,15 @@ class HomeScreenFragment: MainBaseFragment() {
     }
 
     private fun setupContinueWatchingReyclerView() {
-        continueWatchingAdapter.differ.submitList(user.watched)
-        continueWatchingAdapter.setOnItemClickListener {
-            val bundle = Bundle().apply {
-                putSerializable("video", it.video)
-                putSerializable("user", user)
-            }
-            findNavController().navigate(R.id.action_homeScreenFragment_to_videoPlayerActivity, bundle)
+//        continueWatchingAdapter.setOnItemClickListener {
+//            val bundle = Bundle().apply {
+//                putSerializable("video", it.video)
+//                putSerializable("user", user)
+//            }
+//            findNavController().navigate(R.id.action_homeScreenFragment_to_videoPlayerActivity, bundle)
+//        }
+        if (user.watched != null) {
+            viewModel.getTopicbyUid(user.watched!!)
         }
         rvContinueWatching.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false)
