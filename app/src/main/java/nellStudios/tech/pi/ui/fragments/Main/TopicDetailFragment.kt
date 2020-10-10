@@ -37,7 +37,6 @@ class TopicDetailFragment: MainBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityBinding.titleText.text = args.topic.topicName
         setupRecyclerView()
     }
 

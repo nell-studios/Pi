@@ -10,53 +10,63 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/continueWatchingCardView"
-        app:cardElevation="4dp"
+        android:id="@+id/topicCardView"
+        app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
         >
 
-        <FrameLayout
-            android:layout_height="match_parent"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="@android:color/darker_gray"
             >
-            <ImageView
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:id="@+id/thumbnailImage"
+
+            <androidx.cardview.widget.CardView
+                android:layout_height="70dp"
+                android:layout_width="100dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:id="@+id/backgroundImageCardView"
+                app:cardCornerRadius="20dp"
+                android:layout_margin="10dp"
+                >
+                <ImageView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:id="@+id/backgroundImage"
+                    />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                style="@style/HeaderTextStyle"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/backgroundImageCardView"
+                android:text="TITLE"
+                android:id="@+id/topicName"
+                android:layout_margin="10dp"
                 />
 
-            <ProgressBar
-                android:id="@+id/watchedPercentage"
-                style="?android:attr/progressBarStyleHorizontal"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent"
-                android:max="100"
-                android:layout_gravity="bottom"
+            <TextView
+                style="@style/InfoTextStyle"
+                app:layout_constraintTop_toBottomOf="@id/topicName"
+                app:layout_constraintStart_toEndOf="@id/backgroundImageCardView"
+                android:text="CONTENTS"
+                android:id="@+id/topicContents"
+                android:layout_margin="10dp"
                 />
 
-<!--            <LinearLayout-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_gravity="start|bottom"-->
-<!--                android:orientation="vertical"-->
-<!--                >-->
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/viewDetails"
+                android:src="@drawable/ic_baseline_home_24"
+                android:layout_height="24dp"
+                android:layout_width="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="10dp"
+                android:background="@color/white"
+                />
 
-<!--                <TextView-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:id="@+id/videoTitle"-->
-<!--                    style="@style/HeaderTextStyle"-->
-<!--                    />-->
-
-<!--                <TextView-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_width="wrap_content"-->
-<!--                    android:id="@+id/videoDescription"-->
-<!--                    style="@style/HeaderTextStyle"-->
-<!--                    />-->
-<!--            </LinearLayout>-->
-        </FrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 

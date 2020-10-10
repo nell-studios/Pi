@@ -46,10 +46,9 @@ class ContinueWatchingAdapter: RecyclerView.Adapter<ContinueWatchingAdapter.Vide
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val topic = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(topic.bannerImageUrl).into(thumbnailImage)
-//            watchedPercentage.progress = topic.progress?.find {
-//                it.userId.equals(auth.currentUser?.uid)
-//            }!!.watchedPercentage?.toInt()!!
+            Glide.with(this).load(topic.bannerImageUrl).into(backgroundImage)
+            topicName.text = topic.topicName
+            topicContents.text = "${topic.size} videos"
             setOnClickListener {
                 onItemClickListener?.let{
                     it(topic)

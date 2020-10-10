@@ -42,7 +42,6 @@ class ProfileFragment: MainBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityBinding.titleText.text = getString(R.string.profile)
         fetchUser()
         activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
             Glide.with(this).load(user.profileImageUrl).into(profileImage)

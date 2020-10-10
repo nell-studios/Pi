@@ -6,8 +6,10 @@ import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navArgs
@@ -17,15 +19,20 @@ import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import nellStudios.tech.pi.R
 import nellStudios.tech.pi.databinding.ActivityMainBinding
 import nellStudios.tech.pi.models.User
+import nellStudios.tech.pi.ui.fragments.Main.DownloadFragment
+import nellStudios.tech.pi.ui.fragments.Main.HomeScreenFragment
+import nellStudios.tech.pi.ui.fragments.Main.ProfileFragment
+import nellStudios.tech.pi.ui.fragments.Main.SearchFragment
 import nellStudios.tech.pi.viewmodels.MainViewModel
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
 
     var user: User = User()
     val args: MainActivityArgs by navArgs()
@@ -52,4 +59,5 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
+
 }

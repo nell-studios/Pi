@@ -30,8 +30,6 @@ abstract class MainBaseFragment: BaseFragment() {
         activityViewModel.successfullGet.observe(viewLifecycleOwner, Observer {
             activityBinding.mainSwipe.isRefreshing = false
             user = it
-            if (user.name == null) activityBinding.titleText.text = "Hi, ${user.phoneNumber}"
-            else activityBinding.titleText.text = user.name
         })
     }
 }

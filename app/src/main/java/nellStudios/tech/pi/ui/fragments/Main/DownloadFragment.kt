@@ -26,6 +26,5 @@ class DownloadFragment: MainBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityBinding.titleText.text = getString(R.string.downloads)
     }
 }

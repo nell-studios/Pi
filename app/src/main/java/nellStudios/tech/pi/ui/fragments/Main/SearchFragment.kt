@@ -46,7 +46,6 @@ class SearchFragment: MainBaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        activityBinding.titleText.text = getString(R.string.search)
         setupRecyclerView()
         setupEditText()
     }
