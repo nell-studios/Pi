@@ -11,13 +11,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/topicCardView"
-        app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_margin="10dp"
             >
 
             <androidx.cardview.widget.CardView
@@ -33,11 +33,12 @@
                     android:layout_height="match_parent"
                     android:layout_width="match_parent"
                     android:id="@+id/backgroundImage"
+                    android:scaleType="fitXY"
                     />
             </androidx.cardview.widget.CardView>
 
             <TextView
-                style="@style/HeaderTextStyle"
+                style="@style/SubTextStyle"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/backgroundImageCardView"
                 android:text="TITLE"
@@ -54,17 +55,14 @@
                 android:layout_margin="10dp"
                 />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/viewDetails"
+            <ImageView
                 android:src="@drawable/ic_baseline_home_24"
-                android:layout_height="24dp"
-                android:layout_width="24dp"
+                android:layout_height="30dp"
+                android:layout_width="30dp"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="10dp"
-                android:background="@color/white"
-                />
+                android:layout_margin="10dp"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

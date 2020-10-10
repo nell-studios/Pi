@@ -5,13 +5,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_width="250dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/topicCardView"
-        app:cardElevation="10dp"
         app:cardCornerRadius="10dp"
         >
 
@@ -24,6 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:id="@+id/backgroundImage"
+                android:scaleType="centerCrop"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -40,20 +39,33 @@
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:cardElevation="4dp"
-                    app:cardCornerRadius="20dp"
+                    app:cardCornerRadius="25dp"
                     android:id="@+id/headerText"
                     >
 
                     <TextView
-                        style="@style/HeaderTextStyle"
+                        style="@style/SubTextStyle"
+                        android:textColor="@color/white"
                         android:padding="10dp"
+                        android:textStyle="bold"
                         android:text="Trendy"
                         />
 
                 </androidx.cardview.widget.CardView>
 
                 <TextView
+                    style="@style/InfoTextStyle"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_margin="10dp"
+                    android:padding="20dp"
+                    android:text="650 videos"
+                    android:id="@+id/topicContents"
+                    />
+
+                <TextView
                     style="@style/HeaderTextStyle"
+                    android:textColor="@color/white"
                     app:layout_constraintTop_toBottomOf="@id/headerText"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_margin="10dp"

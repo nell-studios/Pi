@@ -4,6 +4,7 @@
     <color name="colorPrimaryDark">#1E2843</color>
     <color name="colorAccent">#FF5018</color>
     <color name="white">#FBFBFB</color>
+    <color name="grey">#ececec</color>
 
     //Media Player Controls
     <color name="media_player_controls">#ffffff</color>
