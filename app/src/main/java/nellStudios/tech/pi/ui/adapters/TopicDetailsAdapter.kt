@@ -44,8 +44,13 @@ class TopicDetailsAdapter: RecyclerView.Adapter<TopicDetailsAdapter.VideoViewHol
                     it(video)
                 }
             }
-            setOnDownloadClickListener {
-                onDownloadClickListener?.let {
+            download_video.setOnClickListener {
+                onItemDownloadListener?.let {
+                    it(video)
+                }
+            }
+            save_video.setOnClickListener {
+                onItemSaveListener?.let {
                     it(video)
                 }
             }
@@ -53,13 +58,18 @@ class TopicDetailsAdapter: RecyclerView.Adapter<TopicDetailsAdapter.VideoViewHol
     }
 
     private var onItemClickListener: ((Videos) -> Unit)? = null
-    private var onDownloadClickListener: ((Videos) -> Unit)? = null
+    private var onItemDownloadListener: ((Videos) -> Unit)? = null
+    private var onItemSaveListener: ((Videos) -> Unit)? = null
 
     fun setOnItemClickListener(listener: (Videos) -> Unit) {
         onItemClickListener = listener
     }
 
-    fun setOnDownloadClickListener(listener: (Videos) -> Unit) {
-        onDownloadClickListener = listener
+    fun setOnItemDownloadListener(listener: (Videos) -> Unit) {
+        onItemDownloadListener = listener
+    }
+
+    fun setOnItemSaveListener(listener: (Videos) -> Unit) {
+        onItemSaveListener  = listener
     }
 }

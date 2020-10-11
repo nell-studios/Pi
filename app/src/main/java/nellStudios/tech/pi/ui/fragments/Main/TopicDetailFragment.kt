@@ -67,12 +67,31 @@ class TopicDetailFragment: MainBaseFragment() {
             })
 
         }
-        topicDetailsAdapter.setOnDownloadClickListener {
 
+        topicDetailsAdapter.setOnItemDownloadListener {
+            viewModel.downloadVideo(it)
+            viewModel.downloaded.observe(viewLifecycleOwner, Observer {
+                if (it) Snackbar.make(requireView(), "File Downloaded Successfully", Snackbar.LENGTH_SHORT).show()
+                else Snackbar.make(requireView(), "File Download Failed", Snackbar.LENGTH_SHORT).show()
+            })
         }
+
+        topicDetailsAdapter.setOnItemSaveListener {
+            viewModel.saveVideo(user.uid!!, it)
+            viewModel.saved.observe(viewLifecycleOwner, Observer {
+                if (it) Snackbar.make(requireView(), "Video Saved Successfully", Snackbar.LENGTH_SHORT).show()
+                else Snackbar.make(requireView(), "Failed", Snackbar.LENGTH_SHORT).show()
+            })
+        }
+
         rvTopicVideos.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
             adapter = topicDetailsAdapter
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activityBinding.bottomNavigationView.visibility = View.VISIBLE
     }
 }
