@@ -37,9 +37,8 @@ class TopicDetailsAdapter: RecyclerView.Adapter<TopicDetailsAdapter.VideoViewHol
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         val video = differ.currentList[position]
         holder.itemView.apply {
-            Glide.with(this).load(video.thumbnailUrl).into(thumbnailImage)
-            videoTitle.text = video.title
-            videoDescription.text = video.description
+            Glide.with(this).load(video.thumbnailUrl).into(backgroundImage)
+            video_name.text  = video.title
             setOnClickListener {
                 onItemClickListener?.let{
                     it(video)

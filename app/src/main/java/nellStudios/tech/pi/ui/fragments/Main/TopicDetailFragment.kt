@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.GridLayoutManager
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_topic_detail.*
@@ -38,6 +39,15 @@ class TopicDetailFragment: MainBaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        setupView()
+    }
+
+    private fun setupView() {
+        Glide.with(requireContext()).load(args.topic.bannerImageUrl).into(topicBanner)
+        topicName.text = args.topic.topicName
+        topicContents.text = "${args.topic.size} videos"
+        back.setOnClickListener { findNavController().popBackStack() }
+        activityBinding.bottomNavigationView.visibility = View.GONE
     }
 
     private fun setupRecyclerView() {

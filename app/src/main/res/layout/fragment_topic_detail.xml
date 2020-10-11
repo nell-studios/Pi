@@ -4,15 +4,105 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".ui.activities.MainActivity">
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/topicBanner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/back"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="10dp"
+        app:cardBackgroundColor="@color/white"
+        android:padding="10dp"
+        >
+
+        <ImageView
+            android:src="@drawable/ic_baseline_arrow_back_ios_24"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        style="@style/HeaderTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/topicBanner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="TITLE"
+        android:layout_marginTop="10dp"
+        android:id="@+id/topicName"
+        />
+
+    <TextView
+        style="@style/InfoTextStyle"
+        app:layout_constraintTop_toBottomOf="@id/topicName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="TITLE"
+        android:layout_marginTop="10dp"
+        android:id="@+id/topicContents"
+        />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvTopicVideos"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topicContents"
         android:layout_marginTop="10dp"
         />
+
+    <androidx.cardview.widget.CardView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/startVideo"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="35dp"
+        app:cardBackgroundColor="@color/colorPrimary"
+        >
+
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            >
+
+            <TextView
+                style="@style/SubTextStyle"
+                android:text="Start Now"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_gravity="start"
+                android:padding="10dp"
+                android:layout_alignParentStart="true"
+                />
+
+            <ImageView
+                android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                android:layout_height="24dp"
+                android:layout_width="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_margin="10dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

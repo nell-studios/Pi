@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.continue_watching_item_view.view.*
-import kotlinx.android.synthetic.main.video_item_view.view.thumbnailImage
 import nellStudios.tech.pi.R
 import nellStudios.tech.pi.models.Topic
 import nellStudios.tech.pi.models.Videos
