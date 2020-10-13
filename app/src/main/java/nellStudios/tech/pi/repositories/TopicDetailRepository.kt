@@ -28,11 +28,11 @@ class TopicDetailRepository @Inject constructor(
             val myLibrary = user?.myLibrary
             val addToLibrary = mutableListOf<String>()
             if (myLibrary == null) {
-                addToLibrary.add(video.title!!)
+                addToLibrary.add(video.id!!)
             } else {
                 addToLibrary.addAll(myLibrary)
-                if (!addToLibrary.contains(video.title!!)) {
-                    addToLibrary.add(video.title!!)
+                if (!addToLibrary.contains(video.id!!)) {
+                    addToLibrary.add(video.id!!)
                 }
             }
             usersRef.document(uid).update("myLibrary", addToLibrary).addOnCompleteListener { saved.value = it.isSuccessful }

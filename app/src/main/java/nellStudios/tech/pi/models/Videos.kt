@@ -3,6 +3,7 @@ package nellStudios.tech.pi.models
 import java.io.Serializable
 
 data class Videos(
+    var id: String? = null,
     var title: String? = null,
     var description: String? = null,
     var videoUrl: String? = null,
