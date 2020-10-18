@@ -1,6 +1,10 @@
 package nellStudios.tech.pi.ui.activities
 
+import android.app.AppOpsManager
+import android.app.PictureInPictureParams
 import android.content.Context
+import android.content.pm.PackageManager
+import android.content.res.Configuration
 import android.media.AudioFocusRequest
 import android.media.AudioManager
 import android.net.Uri
@@ -193,7 +197,7 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
                 toggleFullView()
             }
             R.id.back -> {
-//                (activity as VideoPlayerActivity).enterPipModeOrExit()
+                enterPipModeOrExit()
             }
             R.id.nextEpisode -> {
                 playNextEpisode()
@@ -223,6 +227,9 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
             exoPlayerFrameLayout.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FILL
             exoPlayerView.resizeMode = AspectRatioFrameLayout.RESIZE_MODE_FILL
             player.videoScalingMode = C.VIDEO_SCALING_MODE_SCALE_TO_FIT_WITH_CROPPING
+            window.decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                    or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                    or View.SYSTEM_UI_FLAG_FULLSCREEN)
             isFullScreen = true
             this?.let {
                 exo_full_Screen.setImageDrawable(
@@ -232,6 +239,66 @@ class VideoPlayerActivity : AppCompatActivity(), Player.EventListener, AudioMana
                     )
                 )
             }
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        enterPipModeOrExit()
+    }
+
+    override fun onPictureInPictureModeChanged(
+        isInPictureInPictureMode: Boolean,
+        newConfig: Configuration?
+    ) {
+        exoPlayerView.useController = !isInPictureInPictureMode
+    }
+
+    private fun hasPipPermission(): Boolean {
+        val appsOps = getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
+        return when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q -> {
+                appsOps.unsafeCheckOpNoThrow(
+                    AppOpsManager.OPSTR_PICTURE_IN_PICTURE,
+                    android.os.Process.myUid(),
+                    packageName
+                ) == AppOpsManager.MODE_ALLOWED
+            }
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
+                appsOps.checkOpNoThrow(
+                    AppOpsManager.OPSTR_PICTURE_IN_PICTURE,
+                    android.os.Process.myUid(),
+                    packageName
+                ) == AppOpsManager.MODE_ALLOWED
+            }
+            else -> {
+                false
+            }
+        }
+    }
+
+    private fun enterPipModeOrExit() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N
+            && packageManager
+                .hasSystemFeature(
+                    PackageManager.FEATURE_PICTURE_IN_PICTURE
+                )
+            && hasPipPermission()
+        ) {
+            try{
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    val params = PictureInPictureParams.Builder()
+                    this.enterPictureInPictureMode(params.build())
+                } else {
+                    this.enterPictureInPictureMode()
+                }
+            }catch (ex:Exception){
+                Log.i("VIDEO", ex.message.toString())
+            }
+
+        } else {
+            finish()
         }
     }
 
