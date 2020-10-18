@@ -51,13 +51,13 @@ class HomeScreenFragment: MainBaseFragment() {
             exploreSeeMore.setOnClickListener { findNavController().navigate(R.id.action_homeScreenFragment_to_exploreDetailFragment) }
         }
 
-        val topic = Topic().apply {
-            size = 1
-            topicName = "RandomTopic"
-            videos = mutableListOf(
-                    "S3QC9xmZwElpNVFBtsXB")
-        }
-        viewModel.setTopic(topic)
+//        val topic = Topic().apply {
+//            size = 1
+//            topicName = "RandomTopic"
+//            videos = mutableListOf(
+//                    "S3QC9xmZwElpNVFBtsXB")
+//        }
+//        viewModel.setTopic(topic)
 
         setupExploreRecyclerView()
     }

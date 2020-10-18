@@ -16,6 +16,7 @@ class TopicDetailViewModel @ViewModelInject constructor(
     var videos: LiveData<List<Videos>> = MutableLiveData()
     var downloaded: LiveData<Boolean> = MutableLiveData()
     var saved: LiveData<Boolean> = MutableLiveData()
+    var deleted: LiveData<Boolean> = MutableLiveData()
 
     fun saveVideo(uid: String, video: Videos) {
         saved = repo.saveToMyLibrary(uid, video)
@@ -23,6 +24,10 @@ class TopicDetailViewModel @ViewModelInject constructor(
 
     fun downloadVideo(video: Videos) {
         downloaded = repo.downloadFile(video)
+    }
+
+    fun deleteVideo(video: Videos) {
+        deleted = repo.removeFromMyLibrary(video)
     }
 
     fun addToContinueWatching(topicName: String, uid: String) {

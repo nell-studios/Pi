@@ -2,6 +2,8 @@ package nellStudios.tech.pi.repositories
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import nellStudios.tech.pi.models.User
@@ -51,6 +53,13 @@ class TopicDetailRepository @Inject constructor(
             downloaded.value = false
         }
         return downloaded
+    }
+
+    fun removeFromMyLibrary(video: Videos): MutableLiveData<Boolean> {
+        val deleted: MutableLiveData<Boolean> = MutableLiveData()
+        usersRef.document(FirebaseAuth.getInstance().currentUser!!.uid).update("myLibrary", FieldValue.arrayRemove(video.id))
+            .addOnCompleteListener { deleted.value = it.isSuccessful }
+        return deleted
     }
 
     fun addToContinueWatching(topicName: String, uid: String): MutableLiveData<Boolean> {
