@@ -15,13 +15,42 @@
       },
       "oauth_client": [
         {
-          "client_id": "14089269158-bp84k4lvngpn3hs5l96vb3c97soh17hl.apps.googleusercontent.com",
+          "client_id": "14089269158-u12ficvqkjj0rl1jsqviq92h1k4ukd68.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "nellStudios.tech.pi",
-            "certificate_hash": "36d63351aea5b30a72c88b933c89aea5d05ef616"
+            "certificate_hash": "fbe79534f5c8a436074ad2fdd4245a71fb70f8b5"
           }
         },
+        {
+          "client_id": "14089269158-5bhu0p5rdrsibk7ucf58h9j9j0e4ofgs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH6KRbqR6ViA7AyTp9gJ5TiuU3rNjG7l8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "14089269158-5bhu0p5rdrsibk7ucf58h9j9j0e4ofgs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:14089269158:android:e7dffa1a75ee001f18a967",
+        "android_client_info": {
+          "package_name": "nellStudios.tech.pi_admin"
+        }
+      },
+      "oauth_client": [
         {
           "client_id": "14089269158-5bhu0p5rdrsibk7ucf58h9j9j0e4ofgs.apps.googleusercontent.com",
           "client_type": 3

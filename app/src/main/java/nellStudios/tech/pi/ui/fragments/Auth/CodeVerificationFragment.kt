@@ -47,6 +47,7 @@ class CodeVerificationFragment: BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = (activity as AuthActivity).viewModel
         sendCode()
+//        verify_code?.setOnClickListener { verfiyVerficationCode(verify_code?.text.toString()) }
     }
 
     private fun sendCode() {
@@ -62,7 +63,6 @@ class CodeVerificationFragment: BaseFragment() {
     private val callbacks = object: PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
         override fun onVerificationCompleted(p0: PhoneAuthCredential) {
             val code = p0.smsCode
-
             code?.let {
                 otp_code.setText(code)
                 verfiyVerficationCode(code)
@@ -87,7 +87,7 @@ class CodeVerificationFragment: BaseFragment() {
         firebaseAuth.signInWithCredential(creds).addOnCompleteListener {
             if (it.isSuccessful) {
                 addUserToDatabaseAndLogin(it.result?.user)
-            } else Toast.makeText(context, "Something went wrong", Toast.LENGTH_SHORT).show()
+            } else Toast.makeText(context, "${it.exception?.message.toString()}", Toast.LENGTH_SHORT).show()
         }
     }
 
